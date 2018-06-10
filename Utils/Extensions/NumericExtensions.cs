@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Utils.Extensions
+﻿namespace Utils.Extensions
 {
     public static class NumericExtensions
     {
@@ -41,11 +39,6 @@ namespace Utils.Extensions
         {
             decimal.TryParse(s, out var number);
             return number;
-        }
-
-        public static bool IsNumeric(string s)
-        {
-            return s.All(char.IsDigit);
         }
     }
 }

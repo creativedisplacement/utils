@@ -141,15 +141,5 @@ namespace Utils.Extensions
         {
             return s == "false" || s == null ? Empty : s;
         }
-
-        public static bool StringsDiffer(string value1, string value2)
-        {
-            if (IsNullOrEmpty(value1) || IsNullOrEmpty(value2))
-            {
-                return false;
-            }
-
-            return !string.Equals(value1, value2, StringComparison.InvariantCulture);
-        }
     }
 }

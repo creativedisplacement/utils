@@ -11,10 +11,5 @@
         {
             return b == true;
         }
-
-        public static bool BoolsDiffer(bool value1, bool value2)
-        {
-            return !Equals(value1, value2);
-        }
     }
 }
