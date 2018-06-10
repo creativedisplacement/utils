@@ -15,9 +15,9 @@ namespace Utils.Extensions
         {
             if (IsNullOrEmpty(s))
             {
-                return Empty;
+                return null;
             }
-            return Char.ToUpper(s[0]) + s.Substring(1);
+            return char.ToUpper(s[0]) + s.Substring(1);
         }
 
         public static bool StartsWithAny(this string s, IEnumerable<string> items)
@@ -122,7 +122,9 @@ namespace Utils.Extensions
                 .Replace(":", "")
                 .Replace("~", "")
                 .Replace("&", "and")
-                .Replace(";", "");
+                .Replace(";", "")
+                .Replace("=", "")
+                .Replace("--", "");
         }
 
         public static string StripHtmlTags(this string html)
@@ -135,11 +137,6 @@ namespace Utils.Extensions
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
             return HttpUtility.HtmlDecode(doc.DocumentNode.InnerText);
-        }
-
-        public static string ConvertNullValueToString(this string s)
-        {
-            return s == "false" || s == null ? Empty : s;
         }
     }
 }
