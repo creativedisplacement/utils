@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Utils.Tests
 {
@@ -19,8 +19,7 @@ namespace Utils.Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Guard_Against_Empty_String_Exception_Passing_Null()
         {
-            string s = null;
-            Guard.AgainstEmptyString(s);
+            Guard.AgainstEmptyString(null);
         }
 
         [TestMethod]

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using HtmlAgilityPack;
 using static System.String;
 
 namespace Utils.Extensions
@@ -124,7 +124,12 @@ namespace Utils.Extensions
                 .Replace("&", "and")
                 .Replace(";", "")
                 .Replace("=", "")
-                .Replace("--", "");
+                .Replace("--", "")
+                .Replace("*", "")
+                .Replace("^", "")
+                .Replace("%", "")
+                .Replace(">", "")
+                .Replace("<", "");
         }
 
         public static string StripHtmlTags(this string html)

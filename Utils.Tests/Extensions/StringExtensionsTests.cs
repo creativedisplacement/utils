@@ -16,7 +16,14 @@ namespace Utils.Tests.Extensions
         }
 
         [TestMethod]
-        public void StringExtensions_To_Title_Case_With_Empty_String()
+        public void StringExtensions_To_Title_Case_When_String_Already_Title_Case()
+        {
+            const string s = "Something";
+            Assert.AreEqual(s.ToTitleCase(), s);
+        }
+
+        [TestMethod]
+        public void StringExtensions_To_Title_Case_With_Null_String()
         {
             const string s = null;
             Assert.AreEqual(s.ToTitleCase(), s);
@@ -38,7 +45,7 @@ namespace Utils.Tests.Extensions
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void StringExtensions_Starts_With_Any_On_Empty_String_Returns_False()
+        public void StringExtensions_Starts_With_Any_On_Null_String_Returns_False()
         {
             const string s = null;
             Assert.IsFalse(s.StartsWithAny(new List<string> { "Else" }));
@@ -104,7 +111,7 @@ namespace Utils.Tests.Extensions
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void StringExtensions_RemoveDigits_When_String_Is_Empty()
+        public void StringExtensions_RemoveDigits_When_String_Is_Null()
         {
             const string s = null;
             Assert.AreEqual(s.RemoveDigits(), s);
@@ -130,6 +137,28 @@ namespace Utils.Tests.Extensions
         {
             const string s = null;
             Assert.AreEqual(s.EscapeJsChars(), s);
+        }
+
+        [TestMethod]
+        public void StringExtensions_Remove_Illegal_Xml_Characters()
+        {
+            const string s = "&\"'<>";
+            Assert.AreEqual(s.RemoveIllegalXmlCharacters(), "&amp;&quot;&apos;&lt;&gt;");
+        }
+
+        [TestMethod]
+        public void StringExtensions__Remove_Illegal_Xml_Characters_When_String_Has_No_Illegal_Xml_Characters()
+        {
+            const string s = "This is a long string";
+            Assert.AreEqual(s.RemoveIllegalXmlCharacters(), s);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void StringExtensions_Remove_Illegal_Xml_Characters_When_String_Is_Null()
+        {
+            const string s = null;
+            Assert.AreEqual(s.RemoveIllegalXmlCharacters(), "&amp;&quot;&apos;&lt;&gt;");
         }
 
         [TestMethod]
@@ -168,7 +197,7 @@ namespace Utils.Tests.Extensions
         }
 
         [TestMethod]
-        public void StringExtensions_Remove_Break_Tags_When_String_Is_Empty()
+        public void StringExtensions_Remove_Break_Tags_When_String_Is_Null()
         {
             const string s = null;
             Assert.AreEqual(s.RemoveBreakTags(), s);
@@ -189,7 +218,7 @@ namespace Utils.Tests.Extensions
         }
 
         [TestMethod]
-        public void StringExtensions_Remove_Spaces_When_String_Is_Empty()
+        public void StringExtensions_Remove_Spaces_When_String_Is_Null()
         {
             const string s = null;
             Assert.AreEqual(s.ReplaceSpaces(), s);
@@ -210,10 +239,32 @@ namespace Utils.Tests.Extensions
         }
 
         [TestMethod]
-        public void StringExtensions_Remove_Hypens_When_String_Is_Empty()
+        public void StringExtensions_Remove_Hypens_When_String_Is_Null()
         {
             const string s = null;
             Assert.AreEqual(s.ReplaceHyphens(), s);
+        }
+
+        [TestMethod]
+        public void StringExtensions_Remove_Illegal_Characters()
+        {
+            const string s = "':~&;=--*^%<>";
+            Assert.AreEqual(s.RemoveIllegalCharacters(), "and");
+        }
+
+        [TestMethod]
+        public void StringExtensions_Remove_Illegal_Characters_When_String_Contains_No_Illegal_Characters()
+        {
+            const string s = "This is a string";
+            Assert.AreEqual(s.RemoveIllegalCharacters(), s);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void StringExtensions_Remove_Illegal_Characters_When_String_Is_Null()
+        {
+            const string s = null;
+            Assert.AreEqual(s.RemoveIllegalCharacters(), s);
         }
 
         [TestMethod]
@@ -231,7 +282,7 @@ namespace Utils.Tests.Extensions
         }
 
         [TestMethod]
-        public void StringExtensions_Strip_Html_Tags_When_String_Is_Empty()
+        public void StringExtensions_Strip_Html_Tags_When_String_Is_Null()
         {
             const string s = null;
             Assert.AreEqual(s.StripHtmlTags(), string.Empty);
